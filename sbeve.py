@@ -1,13 +1,14 @@
-def fun(str1, str2):
+def fun(str1):
     str1 = [a for a in str1]
-    str2 = [b for b in str2]
+    flag,str2 = 0, ''
 
-    for a in range(len(str2)):
-        if str2[a] in str(str1):
-            str1.remove(str2[a])
-    return ''.join(str1)
-
-s1 = "She believed"
-s2 = "he lied"
-ans = fun(s1.lower(), s2.lower())
+    for a in range(len(str1)):
+        if str1[a] == "[": flag = 1
+        elif str1[a] == "]": flag = 0
+        if flag == 0 and str1[a] != "]":
+            str2+=str1[a]
+    return "".join(str2.split())
+        
+s1 = "S[he] be[lie]ve[d]"
+ans = fun(s1)
 print(ans)
